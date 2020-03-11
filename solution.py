@@ -24,7 +24,13 @@ def main():
         create_pairs_if_needed(prime_index=prime1_index, primes=primes, sets_map=sets_map)
         for prime2_index in range(prime1_index, len(primes)):
             if primes[prime2_index] in sets_map[prime1_index]:
-
+                create_pairs_if_needed(prime_index=prime2_index, primes=primes, sets_map=sets_map)
+                for prime3_index in range(prime2_index, len(primes)):
+                    prime3 = primes[prime3_index]
+                    if prime3 in sets_map[prime2_index] and prime3 in sets_map[prime1_index]:
+                        # create_pairs_if_needed(prime_index=prime3_index, primes=primes, sets_map=sets_map)
+                        print(primes[prime1_index], primes[prime2_index], primes[prime3_index])
+                        return
 
 def create_pairs_if_needed(prime_index, primes, sets_map):
     if prime_index not in sets_map:
